@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Registrar Saída
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1 class="text-center">Registrar entrada</h1>
+
+    {% if mensagem_saida %}
+        <div class="alert alert-info">{{ mensagem_saida }}</div>
+    {% endif %}
+
+    <form action="{{ url_for('registrar_saida') }}" method="POST">
+        <div class="row">
+            <div class="form-group mb-3 w-50">
+                <label for="motorista">Motorista:</label>
+                <select class="form-control" id="motorista" name="motorista" required>
+                    <option value="" disabled selected>Selecione o motorista</option>
+                    {% for motorista in motoristas %}
+                        <option value="{{ motorista }}">{{ motorista }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-3 w-50">
+                <label for="placa">Placa:</label>
+                <select class="form-control" id="placa" name="placa" required>
+                    <option value="" disabled selected>Selecione a placa</option>
+                    {% for placa, modelo in viaturas.items() %}
+                        <option value="{{ placa }}">{{ placa }} - {{ modelo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group mb-3 w-50">
+                <label for="hodometro_saida">Hodômetro de Saída:</label>
+                <input type="number" class="form-control" id="hodometro_saida" name="hodometro_saida" required placeholder="Digite o hodômetro" min="0">
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn-custom">Registrar Saída</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

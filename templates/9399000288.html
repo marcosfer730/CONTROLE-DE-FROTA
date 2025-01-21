@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Lista de Usuários Administradores</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario['_id'] }}</td>
+                <td>{{ usuario['nome'] }}</td>
+                <td>
+                    <a href="{{ url_for('editar_usuario', id=usuario['_id']) }}" class="btn btn-warning">Editar</a>
+                    <!-- Adicione mais botões de ação aqui, se necessário -->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('cadastrar_usuario') }}" class="btn btn-success">Cadastrar Novo Usuário</a>
+</div>
+{% endblock %}

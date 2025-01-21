@@ -1,0 +1,24 @@
+{% extends "basep.html" %}
+
+{% block title %}Retorno à Garagem{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="mb-4 text-center">Retorno à Garagem</h2>
+</div>
+
+<form action="{{ url_for('retorno_garagem', pedido_id=pedido['_id']) }}" method="POST">
+    <input type="hidden" name="pedido_id" value="{{ pedido['_id'] }}">
+    <div class="mb-3">
+        <label for="motorista" class="form-label">Motorista:</label>
+        <input type="text" class="form-control" name="motorista" required>
+    </div>
+    <div class="mb-3">
+        <label for="viatura" class="form-label">Viatura:</label>
+        <input type="text" class="form-control" name="viatura" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Atender Pedido</button>
+</form>
+
+{% endblock %}

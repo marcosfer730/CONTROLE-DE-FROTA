@@ -1,0 +1,69 @@
+{% extends 'basep.html' %}
+
+{% block title %}Listar Pedidos de Viaturas{% endblock %}
+
+{% block content %}
+<div class="container-fluid d-flex justify-content-center align-items-start" style="min-height: 70vh;">
+    <div class="w-100">
+        <h1 class="text-center mb-4 mt-2">Pedidos Pendentes</h1>
+
+        {% if pedidos|length > 0 %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped text-center align-middle" id="registros-tabela">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th class="text-center">Solicitante</th>
+                        <th class="text-center">Motivo</th>
+                        <th class="text-center">Tipo de Veiculo</th>
+                        <th class="text-center">Qtd. Passageiros</th>
+                        <th class="text-center">Itinerário</th>
+                        <th class="text-center">Observações</th>
+                        <th class="text-center">Data e Hora</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                    <tr>
+                        <td>{{ pedido['nome_solicitante'] }}</td>
+                        <td>{{ pedido['motivo_pedido'] }}</td>
+                        <td>{{ pedido['tipo_viatura'] }}</td>
+                        <td>{{ pedido['numero_passageiros'] }}</td>
+                        <td>{{ pedido['itinerario'] }}</td>
+                        <td>{{ pedido['observacoes'] }}</td>
+                        <td>{{ pedido['data_hora_pedido'] }}</td>
+                        <td>
+                            {% if pedido['status']|lower == 'atendido' %}
+                            <span class="badge bg-success">Atendido</span>
+                            {% elif pedido['status']|lower == 'pendente' %}
+                            <span class="badge bg-warning">Pendente</span>
+                            {% elif pedido['status']|lower == 'cancelado' %}
+                            <span class="badge bg-danger">Cancelado</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if pedido['status']|lower == 'pendente' %}
+                            <a href="{{ url_for('retorno_garagem', pedido_id=pedido['_id']) }}" class="btn btn-info mb-2" aria-label="Atender Pedido">Atender</a>
+
+                            <!-- Formulário para Cancelar Pedido -->
+                            <form action="{{ url_for('cancelar_pedido', pedido_id=pedido['_id']) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger mb-2" aria-label="Cancelar Pedido">Cancelar</button>
+                            </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="9" class="text-center">Nenhum pedido registrado.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-center mt-4">Nenhum pedido pendente no momento.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

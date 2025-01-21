@@ -1,0 +1,302 @@
+/* Estilos Gerais */
+body { 
+    font-family: 'Open Sans', Roboto, Arial, Helvetica, sans-serif, SimSun;
+    margin: 0;
+    color: #222;
+    font-size: 16px;
+    background-color: #f8f9fa;
+}
+
+/* Negrito para a palavra "dashboard" */
+.bold-dashboard {
+    font-weight: bold;
+}
+
+/* Cabeçalhos */
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+
+/* Navegação */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem 2rem;
+    color: white;
+}
+
+.header h1 {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 0.5rem 2rem;
+    color: white;
+    width: 100%;
+    margin: 0; 
+}
+
+.user-name {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.brasao {
+    width: 50px;
+    height: auto;
+    margin-right: 5px;
+    margin-top: 0px;
+    margin-left: 0;
+}
+
+/* Estilos para o popover */
+.popover {
+    position: absolute;
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1030;
+    max-width: 300px;
+    width: auto;
+}
+
+.popover.show {
+    display: block;
+}
+
+.popover p {
+    color: #343a40;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.popover .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    max-height: 100vh;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+th, td{
+    padding: 12px;
+    text-align: center;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+th{
+    border-radius: 5px;
+}
+
+
+
+th {
+    background-color: #312f2f;
+    color: #fff;
+}
+
+/* Botões */
+/* Ajustando o estilo dos botões "Atender" e "Cancelar" */
+.btn-info {
+    background-color: #4ab817; /* Cor de fundo azul */
+    border-color: #37b817; /* Cor da borda */
+    color: #fff; /* Cor do texto */
+}
+
+.btn-info:hover {
+    background-color: #139634; /* Cor de fundo quando passar o mouse */
+    border-color: #118b2f; /* Cor da borda ao passar o mouse */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Cor de fundo vermelha */
+    border-color: #dc3545; /* Cor da borda */
+    color: #fff; /* Cor do texto */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Cor de fundo quando passar o mouse */
+    border-color: #bd2130; /* Cor da borda ao passar o mouse */
+}
+
+.btn {
+    display: center;
+    justify-content: center; /* Centraliza o conteúdo dentro do botão */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* Botões Customizados */
+.btn-custom {
+    display: flex;
+    justify-content: center;
+    background-color: #464646;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #222222;
+    color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo de Formulários */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #222;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: .375rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #333;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+/* Mensagens de Alerta */
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-saida {
+    background-color: #e2f0d4;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+/* Rodapé */
+footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* Melhorando a Responsividade */
+@media print {
+    body {
+        margin: 0;
+        padding-top: 0;
+    }
+
+    header, .navbar, .btn-custom, form {
+        display: none !important;
+    }
+
+    h1, h2 {
+        display: block !important;
+    }
+
+    .assinaturas {
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        color: black;
+    }
+
+    .cap, .cb_dia, .permanencia {
+        margin-bottom: 10mm;
+    }
+
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 4px;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    @page { margin: 10mm; }
+}
+
+/* Estilos para travar o rodapé na parte inferior */ 
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1; /* Faz o container ocupar o espaço restante */
+}
+
+footer {
+    background-color: var(--color-footer-bg); /* Cor do fundo do rodapé */
+    color: var(--color-footer-text); /* Cor do texto do rodapé */
+}
+
+/* Estilos para o cabeçalho da tabela */
+.table thead th {
+    background-color: var(--color-footer-bg); /* Cor escura para o cabeçalho */
+    color: var(--color-table-header-text); /* Cor do texto do cabeçalho */
+}

@@ -1,0 +1,25 @@
+{% extends "basep.html" %}
+
+{% block title %}Relatórios{% endblock %}
+
+{% block content %}
+<h1>Relatórios de Pedidos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Setor</th>
+            <th>ID do Usuário</th>
+            <th>Total de Pedidos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for relatorio in relatorios %}
+        <tr>
+            <td>{{ setor }}</td>
+            <td>{{ relatorio._id }}</td>
+            <td>{{ relatorio.total_pedidos }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

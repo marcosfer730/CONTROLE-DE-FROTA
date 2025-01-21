@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Registrar Entrada
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1 class="text-center" style="margin-bottom: 40px;">Registrar Saida</h1>
+
+    {% if mensagem_erro %}
+    <div class="text-center mb-4">
+        <div class="alert alert-danger">{{ mensagem_erro }}</div>
+    </div>
+    {% endif %}
+
+    <form action="{{ url_for('registrar_entrada') }}" method="POST">
+        <div class="row">
+            <div class="form-group mb-3 w-50">
+                <label for="motorista">Motorista:</label>
+                <select class="form-control" id="motorista" name="motorista" required>
+                    <option value="" disabled selected>Selecione o motorista</option>
+                </select>
+            </div>
+            <div class="form-group mb-3 w-50">
+                <label for="veiculo">Veículo:</label>
+                <select class="form-control" id="veiculo" name="veiculo" required>
+                    <option value="" disabled selected>Selecione a placa e modelo</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group mb-3 w-50">
+                <label for="setor">Setor:</label>
+                <select class="form-control" id="setor" name="setor" required>
+                    <option value="" disabled selected>Selecione o setor</option>
+                </select>
+            </div>
+            <div class="form-group mb-3 w-50">
+                <label for="hodometro">Hodômetro:</label>
+                <input type="number" class="form-control" id="hodometro" name="hodometro" required placeholder="Digite o hodômetro" style="border-radius: 8px;">
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn-custom">Registrar Entrada</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Variáveis globais para dados do backend   
+    const listaMotoristas = {{ lista_motoristas | tojson | safe }};
+    const listaSetores = {{ lista_setores | tojson | safe }};
+    const listaViaturas = {{ lista_viaturas | tojson | safe }};
+
+    // Função para atualizar a seleção de motoristas
+    function atualizarMotoristas() {
+        const motoristasSelect = document.getElementById('motorista');
+        motoristasSelect.innerHTML = '<option value="" disabled selected>Selecione o motorista</option>';
+        listaMotoristas.forEach(motorista => {
+            const option = document.createElement('option');
+            option.value = motorista;
+            option.textContent = motorista;
+            motoristasSelect.appendChild(option);
+        });
+    }
+
+    // Função para atualizar a lista de setores
+    function atualizarSetores() {
+        const setoresSelect = document.getElementById('setor');
+        setoresSelect.innerHTML = '<option value="" disabled selected>Selecione o setor</option>';
+        listaSetores.forEach(setor => {
+            const option = document.createElement('option');
+            option.value = setor;
+            option.textContent = setor;
+            setoresSelect.appendChild(option);
+        });
+    }
+
+    // Função para atualizar a seleção de viaturas
+    function atualizarViaturas() {
+        const veiculosSelect = document.getElementById('veiculo');
+        veiculosSelect.innerHTML = '<option value="" disabled selected>Selecione a placa e modelo</option>';
+        listaViaturas.forEach(viatura => {
+            const option = document.createElement('option');
+            option.value = viatura.placa;
+            option.textContent = `${viatura.placa} - ${viatura.modelo}`;
+            veiculosSelect.appendChild(option);
+        });
+    }
+
+    // Chama as funções ao carregar a página
+    document.addEventListener("DOMContentLoaded", () => {
+        atualizarMotoristas();
+        atualizarSetores();
+        atualizarViaturas();
+    });
+</script>
+
+<!-- Incluindo o jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+
+{% endblock %}

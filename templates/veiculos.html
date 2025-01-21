@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='veiculos.css') }}"> <!-- Link para o arquivo CSS -->
+
+    <h1 class="text-center mb-4">Lista de Veiculos</h1> <!-- Centraliza o título com margem inferior -->
+
+    {% if veiculos %}
+        <div class="table-responsive d-flex justify-content-center"> <!-- Garante que a tabela seja responsiva e centraliza -->
+            <table class="table table-bordered text-center w-auto"> <!-- Adiciona classes do Bootstrap -->
+                <thead class="bg-dark text-white"> <!-- Aplica a classe ao cabeçalho -->
+                    <tr>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Motorista</th> <!-- Exibe o motorista que utilizou a viatura -->
+                        <th>Hora de Entrada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for veiculo in veiculos %}
+                        <tr>
+                            <td>{{ veiculo.placa }}</td>
+                            <td>{{ veiculo.modelo }}</td>
+                            <td>{{ veiculo.motorista if veiculo.motorista else 'Não disponível' }}</td> <!-- Motorista, se disponível -->
+                            <td>{{ veiculo.hora_entrada }}</td> <!-- Exibe a hora de entrada como string -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center" role="alert"> <!-- Usar um alerta para mensagem -->
+            Nenhum veículo registrado.
+        </div>
+    {% endif %}
+{% endblock %}

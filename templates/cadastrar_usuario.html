@@ -1,0 +1,49 @@
+{% extends "basep.html" %}
+
+{% block title %}Cadastrar Usuário{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4 text-center">Cadastrar Usuário</h2>
+    
+    <form action="{{ url_for('cadastrar_usuario') }}" method="POST" class="d-flex flex-column align-items-center">
+        <div class="form-group mb-3 w-50">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Marcos" required>
+        </div>
+        <div class="form-group mb-3 w-50">
+            <label for="setor" class="form-label">Setor</label>
+            <input type="text" class="form-control" id="setor" name="setor" placeholder="Ex: Garagem" required>
+        </div>
+        <div class="form-group mb-3 w-50">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Ex: ABCD@GMAIL.COM" required>
+        </div>
+        <div class="form-group mb-3 w-50">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" required>
+        </div>
+        <div class="form-group mb-3 w-50">
+            <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
+            <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme a senha" required>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-secondary">Cadastrar Usuário</button>
+        </div>
+    </form>
+    
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">Sair</a> <!-- Botão para logout -->
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="mt-4">
+                {% for category, message in messages %}
+                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

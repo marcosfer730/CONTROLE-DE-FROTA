@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Veículo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4 text-center">Inserir Dados</h2> <!-- Centraliza o título -->
+
+    <!-- Exibe a mensagem de feedback, se houver -->
+    {% if mensagem %}
+    <div class="mb-4 text-center">
+        <div class="alert alert-info">{{ mensagem }}</div>
+    </div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('inserir_dados') }}" class="d-flex flex-column align-items-center"> 
+        <div class="form-group mb-3 w-50"> <!-- Define a largura da caixa de texto -->
+            <label for="motorista">Motorista:</label>
+            <input type="text" class="form-control" id="motorista" name="motorista" placeholder="Ex: Cb Marcos " >
+        </div>
+
+        <div class="form-group mb-3 w-50"> <!-- Campo para placa/modelo -->
+            <label for="placa_modelo">Placa/Modelo:</label>
+            <input type="text" class="form-control" id="placa_modelo" name="placa_modelo" placeholder="Ex: ABC1234/MODELO " >
+        </div>
+
+        <div class="form-group mb-3 w-50"> <!-- Campo para setor -->
+            <label for="setor">Setor:</label>
+            <input type="text" class="form-control" id="setor" name="setor" placeholder="Ex: GARAGEM " >
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-secondary">Registrar</button> <!-- Botão para registrar -->
+        </div>
+    </form>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">Sair</a> <!-- Botão para logout -->
+    </div>
+</div> 
+{% endblock %}

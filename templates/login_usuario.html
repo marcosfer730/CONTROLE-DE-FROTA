@@ -1,0 +1,46 @@
+{% extends 'basep.html' %}
+
+{% block title %}Login do Usuário{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Login</h1>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('login_usuario') }}" class="mt-4">
+        <div class="row justify-content-center">
+            <div class="d-flex flex-column align-items-center">
+                <div class="form-group mb-3 w-50">
+                    <label for="username">Nome de Usuário:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+            </div>
+        </div>        
+        <div class="row justify-content-center">
+            <div class="d-flex flex-column align-items-center">
+                <div class="form-group mb-3 w-50">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>        
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-secondary">Login</button>
+        </div>
+    </form>
+
+    <div class="mt-3">
+        <!-- Uncomment and customize as needed -->
+        <!--<a href="{{ url_for('cadastrar_usuario') }}"><button class="btn btn-secondary">Cadastrar-se</button></a>-->
+    </div>
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}

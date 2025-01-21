@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+
+<h1 class="d-flex justify-content-center mt-4">Sistema de Controle de Veiculo</h1>
+<p class="d-flex justify-content-center mt-4">Escolha uma das opções no menu para gerenciar o estacionamento.</p>
+
+<!-- Botão Inserir Dados -->
+<div class="d-flex justify-content-center mt-4">
+    <a href="/login" class="btn-custom">Inserir Dados</a>
+</div>
+
+<!-- Botão Cadastrar Usuarios -->
+<div class="d-flex justify-content-center mt-4">
+    <a href="/cadastrar_usuario" class="btn-custom">Cadastrar Usuários</a>
+</div>
+
+{% endblock %}
